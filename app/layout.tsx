@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { pressStart2P } from '@/app/ui/fonts';
-import "./globals.css";
+import './global.css';
 
 export const metadata: Metadata = {
   title: "Steward's Quest | Educational Game Board",
