@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { pressStart2P } from '@/app/ui/fonts';
 import './global.css';
+import Background from "@/app/ui/background";
 
 export const metadata: Metadata = {
   title: "Steward's Quest | Educational Game Board",
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${pressStart2P.className} antialiased`}
+        className={`${pressStart2P.className} antialiased bg-black`}
       >
-        {children}
+        <Background>
+          {children}
+        </Background>
       </body>
     </html>
   );

@@ -1,5 +1,4 @@
 import pixelBackground from '@/public/backgrounds/jungle-landscape.jpg';
-import homeStyles from './home.module.css';
 
 interface BackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
     children: React.ReactNode;
@@ -7,8 +6,8 @@ interface BackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function Background({ children, className, ...rest }: BackgroundProps) {
     return (
-        <div className={`${homeStyles.pixelContainer} ${className}`} style={{ backgroundImage: `url(${pixelBackground.src})` }} {...rest}>
+        <main className={`bg-cover bg-center h-240 w-screen lg:h-screen flex lg:items-center justify-center ${className}`} style={{ backgroundImage: `url(${pixelBackground.src})` }} {...rest}>
             {children}
-        </div>
+        </main>
     );
 }
