@@ -7,10 +7,10 @@
 }
 
 .buttonImage {
-    width: 30%;
-    height: auto;
+    width: 11rem;
+    height: 3.2rem;
     cursor: pointer;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     position: relative;
 }

@@ -5,8 +5,6 @@ import primaryImage from '@/public/buttons/Gooey_no_text.png';
 import styles from '@/app/ui/home.module.css';
 
 export function StartButton() {
-    const { width, height } = primaryImage;
-    
     const sayStart = () => {
         alert(`Game Start!!!`);
     };
@@ -15,6 +13,7 @@ export function StartButton() {
         <div className={styles.buttonImage} style={{ backgroundImage: `url(${primaryImage.src})` }}>
             <Button 
                 onClick={sayStart}
+                className="absolute top-3 start-12.5"
             >
                 Start
             </Button>
@@ -31,6 +30,7 @@ export function SignInButton() {
         <div className={styles.buttonImage} style={{ backgroundImage: `url(${primaryImage.src})` }}>
             <Button 
                 onClick={saySignIn}
+                className="absolute top-3 start-8"
             >
                 Sign In
             </Button>
