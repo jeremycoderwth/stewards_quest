@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@/app/ui/button';
+import Button from '@/app/ui/button';
 import primaryImage from '@/public/buttons/Gooey_no_text.png';
 import styles from '@/app/ui/home.module.css';
 
