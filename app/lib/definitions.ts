@@ -1,4 +1,6 @@
 
+export type Categories = 'fire' | 'soil pollution' | 'urbanization' | 'nuclear waste';
+
 export type User = {
     id: string;
     name: string;
@@ -15,7 +17,7 @@ export type Player = {
 export type LevelProgress = {
     id: string;
     player_id: string;
-    category: string;
+    category: Categories;
     remainingQuestions: number;
     answeredQuestions: number;
     correctAnswer: number;
@@ -30,17 +32,22 @@ export type Score = {
     score: number;
 };
 
-export type Question = {
+export interface Question {
     id: string;
-    category: string;
-    question: string;
-    options: string[];
-    correctAnswer: string;
+    category: Categories;
+    text: string;
+    options: Choice[];
+    correctAnswer: number;
+};
+
+export type Choice = {
+    label: string;
+    text: string;
 };
 
 export type Category = {
     id: string;
-    name: string;
+    name: Categories;
     description: string;
     // probably will add image_url if needed
 };
