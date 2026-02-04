@@ -32,7 +32,7 @@ export default function PreGame() {
                 {pages[currentPage].component}
             </div>
             <Button onClick={handleConfirm} className='mt-6'>
-                {currentPage < pages.length - 1 ? 'Proceed to Game' : 'Confirm'}
+                {currentPage < pages.length - 1 ? 'Confirm' : 'Proceed to Game'}
             </Button>
         </>
     );

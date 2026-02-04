@@ -3,7 +3,7 @@ import { Question, Categories } from '@/app/lib/definitions';
 export const gamePurposeParagraphs = [
     {
         key: 1,
-        text: "Purpose: The Steward&apos;s Quest was created to support students&apos; academic learning through an engaging and interactive approach."
+        text: "Purpose: The Steward's Quest was created to support students' academic learning through an engaging and interactive approach."
     }, 
     {
         key: 2,
@@ -11,7 +11,7 @@ export const gamePurposeParagraphs = [
     },
     {
         key: 3,
-        text: "This application was developed as a capstone project by Grade 12 students from Group 3, Section St. Gerard, alongside their research study entitled &qouot;Developing a Digital Board Game on Deforestation as an Educational Tool for Grade 11 STEM Students.&qouot; The effectiveness of the game is evaluated by comparing participants&apos; pre-test and post-test results indicating positive learning outcomes through the use of engaging learning resources."
+        text: `This application was developed as a capstone project by Grade 12 students from Group 3, Section St. Gerard, alongside their research study entitled "Developing a Digital Board Game on Deforestation as an Educational Tool for Grade 11 STEM Students." The effectiveness of the game is evaluated by comparing participants' pre-test and post-test results indicating positive learning outcomes through the use of engaging learning resources.`
     },
 ];
 

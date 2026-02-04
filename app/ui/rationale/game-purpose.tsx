@@ -2,9 +2,9 @@ import { gamePurposeParagraphs } from '@/app/lib/data';
 
 export default function GamePurpose() {
     return (
-        <div>
+        <div className='p-4 bg-black/30 rounded-lg'>
             <h1>Game Purpose</h1>
-            <div className="p-4 bg-black/30 rounded-lg">
+            <div>
                 <p className="text-white text-sm">
                     {gamePurposeParagraphs[0].text}
                 </p>
