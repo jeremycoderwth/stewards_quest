@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 import GamePurpose from './game-purpose';
 import Terms from './terms';
@@ -9,8 +9,6 @@ import Introduction from './introduction';
 import { ConfirmButton, ProceedButton } from '@/app/ui/starting-page/buttons';
 
 export default function PreGame() {
-    const router = useRouter();
-
     const pages = [
         { key: 'purpose', component: <GamePurpose /> },
         { key: 'terms', component: <Terms /> },
@@ -24,10 +22,6 @@ export default function PreGame() {
         }
     };
 
-    const handleProceed = () => {
-        router.push('/game');
-    };
-
     return (
         <>
             <div className='mb-4'>
@@ -36,7 +30,7 @@ export default function PreGame() {
             <div className='flex items-center justify-center'>
                 {currentPage < pages.length - 1
                     ? <ConfirmButton onClick={handleConfirm} />
-                    : <ProceedButton onClick={handleProceed} />
+                    : <Link href="/game"><ProceedButton /></Link>
                 }
             </div>
 

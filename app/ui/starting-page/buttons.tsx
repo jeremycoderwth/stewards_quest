@@ -4,11 +4,10 @@ import Button from '@/app/ui/button';
 import primaryImage from '@/public/buttons/Gooey_no_text.png';
 import styles from '@/app/ui/home.module.css';
 
-export function StartButton({ onClick }: { onClick: () => void }) {
+export function StartButton() {
     return (
         <div className={styles.buttonImage} style={{ backgroundImage: `url(${primaryImage.src})` }}>
             <Button 
-                onClick={onClick}
                 className="absolute top-3 start-6"
             >
                 Continue
@@ -44,20 +43,20 @@ export function ConfirmButton({ onClick }: { onClick: () => void }) {
     );
 }
 
-export function ProceedButton({ onClick }: { onClick: () => void }) {
+export function ProceedButton() {
     return (
         <div className={styles.buttonWithAnimation} style={{ backgroundImage: `url(${primaryImage.src})` }}>
-            <Button onClick={onClick} className='absolute top-3 start-0 text-xs'>
+            <Button className='absolute top-3 start-0 text-xs'>
                 Proceed to Game
             </Button>
         </div>
     );
 }
 
-export function EnterGame({ onClick }: { onClick: () => void }) {
+export function EnterGame() {
     return (
         <div className={styles.buttonWithAnimation} style={{ backgroundImage: `url(${primaryImage.src})` }}>
-            <Button onClick={onClick} className='absolute top-4 start-7 text-xs'>
+            <Button className='absolute top-4 start-7 text-xs'>
                 Enter Game
             </Button>
         </div>

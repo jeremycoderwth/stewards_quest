@@ -1,14 +1,9 @@
 'use client';
 
 import { EnterGame } from "./buttons";
-import { useRouter } from "next/navigation"; 
+import Link from 'next/link';
 
 export default function Greeting() {
-    const router = useRouter();
-    
-    const handleEnter = () => {
-        router.push('/game/selection');
-    };
 
     return (
         <div className="flex flex-col gap-4 items-center justify-center">
@@ -17,7 +12,9 @@ export default function Greeting() {
                 <p className="text-white uppercase text-sm text-center">capstone project</p>
             </div>
             <div>
-                <EnterGame onClick={handleEnter} />
+                <Link href='/game/selection'>
+                    <EnterGame />
+                </Link>
             </div>
         </div>
     );
