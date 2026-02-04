@@ -37,3 +37,23 @@ export function SignInButton() {
         </div>
     );
 }
+
+export function ConfirmButton({ onClick }: { onClick: () => void }) {
+    return (
+        <div className={styles.buttonImage} style={{ backgroundImage: `url(${primaryImage.src})` }}>
+            <Button onClick={onClick} className='absolute top-3 start-8'>
+                Confirm
+            </Button>
+        </div>
+    );
+}
+
+export function ProceedButton({ onClick }: { onClick: () => void }) {
+    return (
+        <div className={styles.buttonImage} style={{ backgroundImage: `url(${primaryImage.src})` }}>
+            <Button onClick={onClick} className='absolute top-3 start-0 text-xs'>
+                Proceed to Game
+            </Button>
+        </div>
+    );
+}

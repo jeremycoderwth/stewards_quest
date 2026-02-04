@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import GamePurpose from './game-purpose';
 import Terms from './terms';
 import Introduction from './introduction';
-import Button from '@/app/ui/button';
+import { ConfirmButton, ProceedButton } from '@/app/ui/starting-page/buttons';
 
 export default function PreGame() {
     const router = useRouter();
@@ -21,19 +21,22 @@ export default function PreGame() {
     const handleConfirm = () => {
         if (currentPage < pages.length - 1) {
             setCurrentPage(currentPage + 1);
-        } else {
-            router.push('/game');
         }
+    };
+
+    const handleProceed = () => {
+        router.push('/game/play');
     };
 
     return (
         <>
-            <div>
+            <div className='mb-4'>
                 {pages[currentPage].component}
             </div>
-            <Button onClick={handleConfirm} className='mt-6'>
-                {currentPage < pages.length - 1 ? 'Confirm' : 'Proceed to Game'}
-            </Button>
+            {currentPage < pages.length - 1
+                ? <ConfirmButton onClick={handleConfirm} />
+                : <ProceedButton onClick={handleProceed} />
+            }
         </>
     );
 }
