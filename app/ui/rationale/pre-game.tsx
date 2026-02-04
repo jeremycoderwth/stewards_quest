@@ -25,7 +25,7 @@ export default function PreGame() {
     };
 
     const handleProceed = () => {
-        router.push('/game/play');
+        router.push('/game');
     };
 
     return (

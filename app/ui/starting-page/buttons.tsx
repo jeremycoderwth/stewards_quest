@@ -4,18 +4,14 @@ import Button from '@/app/ui/button';
 import primaryImage from '@/public/buttons/Gooey_no_text.png';
 import styles from '@/app/ui/home.module.css';
 
-export function StartButton() {
-    const sayStart = () => {
-        alert(`Game Start!!!`);
-    };
-
+export function StartButton({ onClick }: { onClick: () => void }) {
     return (
         <div className={styles.buttonImage} style={{ backgroundImage: `url(${primaryImage.src})` }}>
             <Button 
-                onClick={sayStart}
-                className="absolute top-3 start-12.5"
+                onClick={onClick}
+                className="absolute top-3 start-6"
             >
-                Start
+                Continue
             </Button>
         </div>
     );
@@ -40,7 +36,7 @@ export function SignInButton() {
 
 export function ConfirmButton({ onClick }: { onClick: () => void }) {
     return (
-        <div className={styles.buttonImage} style={{ backgroundImage: `url(${primaryImage.src})` }}>
+        <div className={styles.buttonWithAnimation} style={{ backgroundImage: `url(${primaryImage.src})` }}>
             <Button onClick={onClick} className='absolute top-3 start-8'>
                 Confirm
             </Button>
@@ -50,9 +46,19 @@ export function ConfirmButton({ onClick }: { onClick: () => void }) {
 
 export function ProceedButton({ onClick }: { onClick: () => void }) {
     return (
-        <div className={styles.buttonImage} style={{ backgroundImage: `url(${primaryImage.src})` }}>
+        <div className={styles.buttonWithAnimation} style={{ backgroundImage: `url(${primaryImage.src})` }}>
             <Button onClick={onClick} className='absolute top-3 start-0 text-xs'>
                 Proceed to Game
+            </Button>
+        </div>
+    );
+}
+
+export function EnterGame({ onClick }: { onClick: () => void }) {
+    return (
+        <div className={styles.buttonWithAnimation} style={{ backgroundImage: `url(${primaryImage.src})` }}>
+            <Button onClick={onClick} className='absolute top-4 start-7 text-xs'>
+                Enter Game
             </Button>
         </div>
     );
