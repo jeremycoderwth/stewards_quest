@@ -33,10 +33,13 @@ export default function PreGame() {
             <div className='mb-4'>
                 {pages[currentPage].component}
             </div>
-            {currentPage < pages.length - 1
-                ? <ConfirmButton onClick={handleConfirm} />
-                : <ProceedButton onClick={handleProceed} />
-            }
+            <div className='flex items-center justify-center'>
+                {currentPage < pages.length - 1
+                    ? <ConfirmButton onClick={handleConfirm} />
+                    : <ProceedButton onClick={handleProceed} />
+                }
+            </div>
+
         </>
     );
 }
