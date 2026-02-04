@@ -1,4 +1,6 @@
+'use client';
 
+import Button from '@/app/ui/button';
 
 export default function Greeting() {
     return (
@@ -6,7 +8,7 @@ export default function Greeting() {
             <h1 className="text-2xl font-bold text-center text-green-400 my-4">Steward&apos;s Quest</h1>
             <p className="text-white uppercase text-sm text-center">capstone project</p>
             <div>
-
+                <Button>Start Game</Button>
             </div>
         </div>
     );

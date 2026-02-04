@@ -1,4 +1,9 @@
+import Greeting from '@/app/ui/starting-page/welcome';
 
 export default function Page() {
-    return <p>Game Start!</p>;
+    return (
+        <>
+            <Greeting />
+        </>
+    );
 }
