@@ -1,4 +1,4 @@
-import { gamePurposeParagraphs } from '@/app/lib/definitions';
+import { gamePurposeParagraphs } from '@/app/lib/data';
 
 export default function GamePurpose() {
     return (

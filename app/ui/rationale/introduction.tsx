@@ -1,4 +1,4 @@
-import { deforestationMeaning } from '@/app/lib/definitions';
+import { deforestationMeaning } from '@/app/lib/data';
 
 export default function Introduction() {
     return (

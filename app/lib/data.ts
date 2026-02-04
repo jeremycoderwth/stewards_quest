@@ -1,5 +1,50 @@
 import { Question, Categories } from '@/app/lib/definitions';
 
+export const gamePurposeParagraphs = [
+    {
+        key: 1,
+        text: "Purpose: The Steward&apos;s Quest was created to support students&apos; academic learning through an engaging and interactive approach."
+    }, 
+    {
+        key: 2,
+        text: "It is a digital board game focused on deforestation, designed to make learning both meaningful and enjoyable."
+    },
+    {
+        key: 3,
+        text: "This application was developed as a capstone project by Grade 12 students from Group 3, Section St. Gerard, alongside their research study entitled &qouot;Developing a Digital Board Game on Deforestation as an Educational Tool for Grade 11 STEM Students.&qouot; The effectiveness of the game is evaluated by comparing participants&apos; pre-test and post-test results indicating positive learning outcomes through the use of engaging learning resources."
+    },
+];
+
+export const termsAndConditions = [
+    {
+        key: 1,
+        text: "By continuing, you acknowledge that this application is developed as part of a capstone project and is intended to assess its effectiveness through a comparison of pre-test and post-test scores answered by Grade 11 students."
+    },
+    {
+        key: 2,
+        text: "Any information gathered through this application will be used solely for research purposes. All data will be kept confidential and stored securely by the researchers. The collected information will not be shared with third parties or used for any purpose other than this study."
+    },
+    {
+        key: 3,
+        text: 'Content: By clicking "I Agree" you confirm that, as as selected participant, you understand the purpose of the game and voluntarily agree to participate, play the game, and answer all required assessments.'
+    },
+];
+
+export const deforestationMeaning = [
+    {
+        key: 1,
+        text: "Deforestation is the process of clearing or converting forested land for other uses such as agriculture, urban development, or logging."
+    },
+    {
+        key: 2,
+        text: "This large-scale loss of trees removes natural habitats and disrupts the balance of ecosystems"
+    },
+    {
+        key: 3,
+        text: "Scientific research shows that converting forests into plantations, grasslands, or croplands dramatically alters soil properties and reduces crucial ecosystem functions liek carbon storage and nutrient cycling (Qu et al., 2024)"
+    },
+];
+
 export const fireRelatedQuestions: Question[] = [
     {
         id: 'FIRE-Q1',
@@ -116,5 +161,62 @@ export const urbanizationRelatedQuestions: Question[] = [
 ];
 
 export const nuclearWasteRelatedQuestions: Question[] = [
-    
+    {
+        id: 'NUCLEARWASTE-Q1',
+        category: 'nuclear waste' as Categories,
+        text: `
+            How can nuclear waste contribute to deforestation through water pollution?
+
+            Statement 1:
+            Nuclear waste can contaminate nearby rivers and groundwater.
+
+            Statement 2:
+            Polluted water can damage forest soil and weaken tree growth, contributing to deforestation.
+        `,
+        options: [
+            { label: 'A', text: "Bot statements are TRUE" },
+            { label: 'B', text: "Statement 1 is TRUE, Statement 2 is FALSE" },
+            { label: 'C', text: "Statement 1 is FALSE , STatement 2 is TRUE" },
+            { label: 'D', text: "Both statements are FALSE" }
+        ],
+        correctAnswer: 0
+    }, {
+        id: 'NUCLEARWASTE-Q2',
+        category: 'nuclear waste' as Categories,
+        text: `
+            What role does deforestation play in nuclear waste water pollution?
+
+            Statement 1:
+            Deforestation increases soil erosion, allowing radioactive pollutants to spread more easily into water sources.
+
+            Statement 2:
+            Forests have no role in filtering or protecting water from nuclear contamination.
+        `,
+        options: [
+            { label: 'A', text: "Bot statements are TRUE" },
+            { label: 'B', text: "Statement 1 is TRUE, Statement 2 is FALSE" },
+            { label: 'C', text: "Statement 1 is FALSE , STatement 2 is TRUE" },
+            { label: 'D', text: "Both statements are FALSE" }
+        ],
+        correctAnswer: 1
+    }, {
+        id: 'NUCLEARWASTE-Q3',
+        category: 'nuclear waste' as Categories,
+        text: `
+            Which statement best explains long-term environmental damage?
+
+            Statement 1:
+            Water pollution from nuclear waste can harm both aquatic ecosystems and nearby forests.
+
+            Statement 2:
+            Once forests are polluted by nuclear waste, they recover instantly without long-term effects
+        `,
+        options: [
+            { label: 'A', text: "Bot statements are TRUE" },
+            { label: 'B', text: "Statement 1 is TRUE, Statement 2 is FALSE" },
+            { label: 'C', text: "Statement 1 is FALSE , STatement 2 is TRUE" },
+            { label: 'D', text: "Both statements are FALSE" }
+        ],
+        correctAnswer: 1
+    }
 ];

@@ -1,4 +1,4 @@
-import { termsAndConditions } from '@/app/lib/definitions';
+import { termsAndConditions } from '@/app/lib/data';
 
 export default function Terms() {
     return (
