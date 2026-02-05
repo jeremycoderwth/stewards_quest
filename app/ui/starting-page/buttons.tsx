@@ -5,7 +5,7 @@ import primaryImage from '@/public/buttons/Gooey_no_text.png';
 import styles from '@/app/ui/home.module.css';
 
 interface ButtonProps {
-    label: string;
+    label?: string;
     imageSrc: string;
     onClick?: () => void;
     className?: string;
@@ -15,6 +15,16 @@ export function ImageButton({ label, imageSrc, onClick, className }: ButtonProps
     return (
         <div className={styles.buttonImage} style={{ backgroundImage: `url(${imageSrc})` }}>
             <Button onClick={onClick} className={className ?? ""}>
+                {label}
+            </Button>
+        </div>
+    );
+}
+
+export function GuiButton({ label, imageSrc, onClick, className }: ButtonProps) {
+    return (
+        <div className={className} style={{ backgroundImage: `url(${imageSrc})` }}>
+            <Button onClick={onClick}>
                 {label}
             </Button>
         </div>

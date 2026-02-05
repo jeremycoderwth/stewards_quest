@@ -220,3 +220,16 @@ export const nuclearWasteRelatedQuestions: Question[] = [
         correctAnswer: 1
     }
 ];
+
+export const characters = [
+    {
+        id: "character01",
+        name: "Juan Dela Cruz",
+        sprite: "boy"
+    },
+    {
+        id: "character02",
+        name: "Jane Mercado",
+        sprite: "girl"
+    },
+];
