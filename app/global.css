@@ -2,3 +2,6 @@
 
 @tailwind utilities;
 
+.pixelated {
+    image-rendering: pixelated;
+}
