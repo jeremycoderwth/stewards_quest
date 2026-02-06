@@ -1,7 +1,8 @@
 import { characters } from "@/app/lib/data";
 import type { KAPLAYCtx } from "kaplay";
+import type { Character } from "@/app/lib/definitions";
 
-export function characterSelectScene(k: KAPLAYCtx) {
+export function characterSelectScene(k: KAPLAYCtx, onConfirm: (character: Character) => void) {
     let currentIndex = 0;
     let currentCharacter = k.add([
         k.sprite(characters[currentIndex].sprite),
@@ -85,8 +86,6 @@ export function characterSelectScene(k: KAPLAYCtx) {
     ]);
 
     confirm.onClick(() => {
-        k.go("game", {
-            selectedCharacter: characters[currentIndex],
-        });
-    })
+        onConfirm(characters[currentIndex]);
+    });
 }
