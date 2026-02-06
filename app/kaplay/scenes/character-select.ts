@@ -17,9 +17,11 @@ export function characterSelectScene(k: KAPLAYCtx) {
         k.text(characters[currentIndex].name),
         k.pos(
             k.center().x,
-            360
+            240
         ),
-        k.anchor('center')
+        k.anchor('center'),
+        k.scale(.5),
+        k.color(0, 0, 0)
     ]);
 
     const showCharacter = (index: number) => {
@@ -33,7 +35,7 @@ export function characterSelectScene(k: KAPLAYCtx) {
             k.sprite(data.sprite),
             k.pos(
                 k.center().x, 
-                200
+                150
             ),
             k.anchor("center"),
             k.scale(.5)
@@ -47,7 +49,7 @@ export function characterSelectScene(k: KAPLAYCtx) {
     // left button
     const arrowLeft = k.add([
         k.sprite("arrowLeft"),
-        k.pos(60, 220),
+        k.pos(60, 160),
         k.anchor("center"),
         k.scale(.2),
         k.area()
@@ -61,7 +63,7 @@ export function characterSelectScene(k: KAPLAYCtx) {
     // right button
     const arrowRight = k.add([
         k.sprite("arrowRight"),
-        k.pos(280, 220),
+        k.pos(320, 160),
         k.anchor("center"),
         k.scale(.2),
         k.area()
@@ -75,9 +77,11 @@ export function characterSelectScene(k: KAPLAYCtx) {
     // confirm button
     const confirm = k.add([
         k.text("CONFIRM"),
-        k.pos(k.center().x, 420),
+        k.pos(k.center().x, 290),
         k.anchor("center"),
-        k.area()
+        k.area(),
+        k.scale(.5),
+        k.color(0, 0, 0)
     ]);
 
     confirm.onClick(() => {

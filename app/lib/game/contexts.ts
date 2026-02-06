@@ -1,7 +1,7 @@
 import type { KAPLAYCtx } from "kaplay";
 
 import boyCharacter from '@/public/spritesheets/boy.png';
-import girlCharacter from '@/public/spritesheets/girl-2.png';
+import girlCharacter from '@/public/spritesheets/girl-3.png';
 import leftArrow from '@/public/buttons/ArrowLeft-Thin/Default@2x.png';
 import rightArrow from '@/public/buttons/ArrowRight-Thin/Default@2x.png';
 

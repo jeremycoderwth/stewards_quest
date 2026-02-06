@@ -14,6 +14,12 @@ export type Player = {
     // probably will "avatar: string;" if needed
 };
 
+export type Character = {
+    id: string;
+    name: string;
+    sprite: string;
+};
+
 export type LevelProgress = {
     id: string;
     player_id: string;
@@ -25,6 +31,11 @@ export type LevelProgress = {
     status: 'incomplete' | 'completed';
     rating: number;
     // feeling ko may kulang pa e pero i'll think
+};
+
+export type GameState = {
+    selectedCharacter: Character | null;
+    setCharacter: (char: Character) => void;
 };
 
 export type Score = {

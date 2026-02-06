@@ -8,11 +8,12 @@ import { registerScenes } from '@/app/kaplay/game/scenes';
 export default function GameCanvas() {
     useEffect(() => {
         const k = kaplay({
-            width: 360,
-            height: 640,
-            scale: 2,
+            width: 380,
+            height: 330,
+            scale: 1.5,
             crisp: true,
-            background: [0, 0, 0, 0],
+            background: [0, 0, 0, 0], // #000000 for testing
+            canvas: document.getElementById('kaplay-container') as HTMLCanvasElement,
         });
 
         loadAssets(k);
@@ -23,7 +24,7 @@ export default function GameCanvas() {
     }, []);
 
     return (
-        <div id='kaplay-container' />
+        <canvas id="kaplay-container" />
     );
 }
 
