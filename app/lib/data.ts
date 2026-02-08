@@ -233,3 +233,18 @@ export const characters = [
         sprite: "girl"
     },
 ];
+
+export const mechanics = [
+    {
+        key: 1,
+        text: "In this quiz, we have 4 categories: Fire, Soil Pollution, Nuclear Waste, and Urbanization. These categories also are represented by its own environment the moment you play the game."
+    },
+    {
+        key: 2,
+        text: "Each categories contains 3 questions that you must answer adn choose on the options provided."
+    },
+    {
+        key: 3,
+        text: "If you answered a question correctly, you will be able to plant a tree in the environment. If your answer is wrong, a catastrophic event will happen. Be careful and good luck!"
+    }
+];
