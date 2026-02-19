@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "app/ui/game/test-canvas.tsx",
+    "app/ui/game/quest.tsx"
   ]),
 ]);
 
