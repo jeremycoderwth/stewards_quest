@@ -1,5 +1,8 @@
+import { RenderChunk } from '@/app/ui/utils/chunk-manager';
+import { GameObj } from 'kaplay';
 
 export type Categories = 'fire' | 'soil pollution' | 'urbanization' | 'nuclear waste';
+export type TileFrame = 0 | 1 | 2 | 3;
 
 export type User = {
     id: string;
@@ -20,17 +23,19 @@ export type Character = {
     sprite: string;
 };
 
-export type LevelProgress = {
-    id: string;
-    player_id: string;
-    category: Categories;
-    remainingQuestions: number;
-    answeredQuestions: number;
-    correctAnswer: number;
-    incorrectAnswer: number;
-    status: 'incomplete' | 'completed';
-    rating: number;
-    // feeling ko may kulang pa e pero i'll think
+export interface LevelConfig {
+    id: number;
+    name: string;
+    category: string;
+    // mapTheme: TileFrame;
+}
+
+export interface LevelData {
+    id: number;
+    category: string;
+    mapData: number[][];
+    chunkRenderer?: RenderChunk;
+    questions: Question[];
 };
 
 export type GameState = {
@@ -49,17 +54,87 @@ export interface Question {
     text: string;
     options: Choice[];
     correctAnswer: number;
+    consequence: object;
 };
 
+export type AffectedArea = {
+    x: number;
+    y: number;
+    radius?: number;
+};
+
+export interface QuizQuestion {
+    id: string;
+    category: Categories;
+    question: string;
+    choices: Choice[];
+    correctIndex: number;
+    targetTile: AffectedArea;
+}
+
 export type Choice = {
-    label: string;
+    index: number;
     text: string;
 };
 
 export type Category = {
-    id: string;
-    name: Categories;
-    description: string;
+    id: Categories;
+    name: string;
+    description?: string;
+    questions: Question[];
     // probably will add image_url if needed
 };
 
+export type QualifiedConsequences = {
+    allConsequences: string[];
+};
+
+export type States = {
+    healthy: number[];
+    damaged: number[];
+    unhealthy: number[];
+    destroyed: number[];
+};
+
+export type NotificationType = "success" | "error" | "warning" | "info";
+
+export interface NotificationProps {
+    message: string;
+    type?: NotificationType;
+    duration?: number;
+    onClose?: () => void;
+};
+
+export type TileConfig = {
+    sprite: {
+        name: string;
+        frame: number;
+    };
+    frameWidth: number;
+    frameHeight: number;
+    collides: boolean;
+}
+
+export type TileTypes = Record<number, TileConfig>;
+
+export interface Chunk {
+    key: string;
+    tiles: GameObj[];
+}
+
+export type LEVELS = {
+    id: string;
+    worldTheme: TileTypes;
+    questions: QuizQuestion[];
+    tileSize: number;
+    worldWidth: number;
+    worldHeight: number;
+};
+
+export type ImageButtonProps = {
+    src: string;
+    alt?: string;
+    onClick: () => void;
+    classnames?: string;
+    text?: string;
+};

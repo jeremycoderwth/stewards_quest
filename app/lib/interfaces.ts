@@ -1,5 +1,5 @@
 import testButton from '@/public/buttons/Gooey_no_text.png';
-import { ImageButtonProps } from "@/app/lib/prop-types";
+import { ImageButtonProps } from "@/app/lib/definitions";
 
 export const helloButton: ImageButtonProps = {
     src: testButton.src,
