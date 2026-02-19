@@ -21,8 +21,9 @@ export function characterSelectScene(k: KAPLAYCtx, onConfirm: (character: Charac
             240
         ),
         k.anchor('center'),
+        k.color(20, 30, 21),
         k.scale(.5),
-        k.color(0, 0, 0)
+        "character-ui"
     ]);
 
     const showCharacter = (index: number) => {
@@ -77,12 +78,20 @@ export function characterSelectScene(k: KAPLAYCtx, onConfirm: (character: Charac
 
     // confirm button
     const confirm = k.add([
-        k.text("CONFIRM"),
+        k.rect(100, 40, { radius: 8 }),
         k.pos(k.center().x, 290),
         k.anchor("center"),
         k.area(),
-        k.scale(.5),
-        k.color(0, 0, 0)
+        k.outline(3),
+        k.color(255, 250, 250),
+        "btn-ui"
+    ]);
+    
+    confirm.add([
+        k.text("CONFIRM", { size: 12, align: "center" }),
+        k.anchor("center"),
+        k.color(0, 0, 0),
+        "btn-ui"
     ]);
 
     confirm.onClick(() => {

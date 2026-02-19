@@ -1,13 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import kaplay, { KAPLAYCtx } from "kaplay";
-import { loadAssets } from "@/app/lib/game/contexts";
-import { registerMechanicsScenes } from "@/app/kaplay/game/scenes";
+import { loadAssets } from "@/app/lib/game/assets";
+import { loadingScreen } from '@/app/kaplay/scenes/loading';
+import { instructionsScene } from '@/app/kaplay/scenes/instructions';
 
 export default function Mechanics() {
     const characterSelectRef = useRef<HTMLDivElement>(null);
     const kaplayRef = useRef<KAPLAYCtx>(null);
+    const router = useRouter();
 
     useEffect(() => {
         const characterSelectElement = characterSelectRef.current;
@@ -18,14 +21,17 @@ export default function Mechanics() {
             width: 750,
             height: 400,
             crisp: true,
-            background: [6, 43, 2, 0.2], // #000000 for testing
+            background: [6, 43, 2, 0.2],
             root: characterSelectRef.current || undefined,
+            font: "PressStart2P"
         });
 
         kaplayRef.current = k;
 
         loadAssets(k);
-        registerMechanicsScenes(k);
+        
+        loadingScreen(k);
+        instructionsScene(k, router);
 
         k.go("loading");
 

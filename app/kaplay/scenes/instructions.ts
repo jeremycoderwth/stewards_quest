@@ -1,7 +1,8 @@
 import { KAPLAYCtx } from "kaplay";
 import { mechanics } from "@/app/lib/data";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export function instructionsScene(k: KAPLAYCtx) {
+export function instructionsScene(k: KAPLAYCtx, router: AppRouterInstance) {
   const displayedMechanics = new Set<number>();
   const pad = 24;
 
@@ -102,7 +103,7 @@ export function instructionsScene(k: KAPLAYCtx) {
     ]);
 
     startButton.onClick(() => {
-      k.go("quest");
+      router.push("/game/quest");
     });
   });
 }
