@@ -13,19 +13,6 @@ import { RenderChunk } from '@/app/ui/utils/chunk-manager';
 import { levels } from "@/app/lib/data";
 
 export default function PlaygroundCanvas() {
-    const fireTiles = {
-        0: { sprite: { name: "fire", frame: 3 }, collides: false },
-        1: { sprite: { name: "fire", frame: 1 }, collides: false },
-        2: { sprite: { name: "fire", frame: 2 }, collides: false },
-        3: { sprite: { name: "fire", frame: 0 }, collides: false },
-    };
-    const soilTiles = {
-        0: { sprite: { name: "soil", frame: 2 }, collides: false },
-        1: { sprite: { name: "soil", frame: 1 }, collides: false },
-        2: { sprite: { name: "soil", frame: 3 }, collides: false },
-        3: { sprite: { name: "soil", frame: 0 }, collides: false },
-    };
-
     const tileSize = 800 * 0.08;
     const areaWidth = 2000;
     const areaHeight = 2000;

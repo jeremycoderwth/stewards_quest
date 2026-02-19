@@ -1,4 +1,4 @@
-import { TileFrame, LevelConfig, Categories } from '@/app/lib/definitions';
+import { LevelConfig, Categories } from '@/app/lib/definitions';
 
 export class Level {
     public id: number;
@@ -13,7 +13,6 @@ export class Level {
         this.id = config.id;
         this.name = config.name;
         this.category = config.category as Categories;
-        // this.mapTheme = config.mapTheme;
         this.unlocked = unlocked;
     }
 

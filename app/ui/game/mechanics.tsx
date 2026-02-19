@@ -44,7 +44,7 @@ export default function Mechanics() {
 
             kaplayRef.current = null;  
         }
-    }, []);
+    });
 
     return (
         <div ref={characterSelectRef} className="rounded-lg" />
