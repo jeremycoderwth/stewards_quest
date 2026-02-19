@@ -1,5 +1,4 @@
 
-
 export default function Hero() {
     return (
         <div className="p-4 w-75 lg:w-200 text-center bg-black/30 lg:bg-black/15 rounded-lg">

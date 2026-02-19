@@ -1,6 +1,6 @@
 "use client";
 
-import { StartButton, SignInButton } from '@/app/ui/starting-page/buttons';
+import { StartButton } from '@/app/ui/starting-page/buttons';
 import Link from 'next/link';
 
 export default function LandingPage() {
@@ -10,7 +10,6 @@ export default function LandingPage() {
             <Link href="/rationale">
                 <StartButton />
             </Link>
-            <SignInButton />
         </div>
     );
 }
