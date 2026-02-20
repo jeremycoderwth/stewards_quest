@@ -95,7 +95,7 @@ export function loadAssets(k: KAPLAYCtx) {
 
     k.loadSprite("arrowRight", rightArrow.src);
 
-    k.loadFont("PressStart2P", "../../../../fonts/PressStart2P-vaV7.ttf");
+    k.loadFont("PressStart2P", "/fonts/PressStart2P-vaV7.ttf");
 
     k.loadSprite("arrowLeftBold", leftArrowBold.src);
 
