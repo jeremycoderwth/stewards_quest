@@ -12,7 +12,7 @@ export default function Greeting() {
                 <p className="text-white uppercase text-sm text-center">capstone project</p>
             </div>
             <div>
-                <Link href='/game/selection'>
+                <Link href='/game/quest'>
                     <EnterGame />
                 </Link>
             </div>
