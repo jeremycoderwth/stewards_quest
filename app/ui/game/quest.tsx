@@ -48,6 +48,15 @@ export default function GameInit() {
         k.scene("selection", () => {
             let currentIndex = 0;
 
+            // heading
+            k.add([
+                k.text("SELECT YOUR PREFERED CHARACTER IN THE GAME", { size: 16, align: "center", font: "PressStart2P" }),
+                k.pos(k.center().x, 100),
+                k.anchor("center"),
+                k.color(0, 0, 0),
+                "heading"
+            ]);
+
             let currentCharacter = k.add([
                 k.sprite(characters[currentIndex].sprite),
                 k.pos(
@@ -124,7 +133,7 @@ export default function GameInit() {
             // confirm button
             const confirm = k.add([
                 k.rect(100, 40, { radius: 8 }),
-                k.pos(k.center().x, k.center().y + 160),
+                k.pos(k.center().x, k.center().y + 200),
                 k.anchor("center"),
                 k.area(),
                 k.outline(3),
