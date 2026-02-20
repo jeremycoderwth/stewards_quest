@@ -1,6 +1,6 @@
 "use client";
 
-import kaplay, { AreaComp, GameObj, AnchorComp, FixedComp, KAPLAYCtx, PosComp, SpriteComp, ZComp, Vec2, Vec2Args } from "kaplay";
+import kaplay, { GameObj, KAPLAYCtx, Vec2 } from "kaplay";
 import { Player } from "@/app/ui/utils/player";
 import { loadAssets } from "@/app/lib/game/assets";
 import { useEffect, useRef } from "react";
@@ -31,7 +31,7 @@ export default function GameInit() {
             height: 600,
             background: [255, 255, 255],
             global: false,
-            debug: true,
+            debug: false,
             touchToMouse: true,
             pixelDensity: window.devicePixelRatio,
             root: rootRef.current,
@@ -233,13 +233,12 @@ export default function GameInit() {
             const unlocked = ProgressManager.getUnlockedLevels();
             const definedLevels = levels ?? [];
 
-            let currentTree: GameObj<SpriteComp | PosComp | AnchorComp | AreaComp | ZComp> | null = null;
+            let currentTree = null;
             let dragOffset = k.vec2(0, 0);
             let isDragging = false;
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             let dragSource = null;
-            let pressedTree: GameObj<SpriteComp | PosComp | AnchorComp | AreaComp | ZComp | FixedComp | { treeSpriteType: string; }> | null = null;
-            let pressStartPos: [number] | [Vec2] | [number| Vec2] | Vec2Args | null = null;
+            let pressedTree = null;
+            let pressStartPos = null;
             const DRAG_THRESHOLD = 5;
             const generatedMap = new MapGenerator(grassland.worldWidth, grassland.worldHeight, grassland.tileSize, 0);
             const mapData = generatedMap.createDefaultMap();
