@@ -2,4 +2,6 @@ STEWARD"S QUEST - AN EDUCATIONAL 2D TOPDOWN GAME USING KAPLAY AND NEXTJS
 
 FEEL FREE TO VISIT THE GAME AND HAVE FUN PLAYING
 
-Link of the Game:
+Link of the Game: "https://stewards-quest.vercel.app/"
+
+ENJOY!
