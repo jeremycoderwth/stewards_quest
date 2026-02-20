@@ -4,7 +4,6 @@ import kaplay, { GameObj, KAPLAYCtx, Vec2 } from "kaplay";
 import { Player } from "@/app/ui/utils/player";
 import { loadAssets } from "@/app/lib/game/assets";
 import { useEffect, useRef } from "react";
-import { useGameStore } from "@/app/lib/store/store-data";
 import { nuclearWasteLevel, levels, grassland } from "@/app/lib/data";
 import { WorldManager } from "@/app/ui/utils/world";
 import { QuizSystem } from '@/app/ui/utils/quiz';
@@ -13,12 +12,16 @@ import { GameManager, ProgressManager } from '@/app/ui/utils/manage-level';
 import { RenderChunk } from '@/app/ui/utils/chunk-manager';
 import { MapGenerator } from '@/app/ui/utils/map-generator';
 import { AffectedArea, LEVELS } from "@/app/lib/definitions";
+import { useGameStore } from '@/app/lib/store/store-data';
+import { characters } from "@/app/lib/data";
+import { mechanics } from "@/app/lib/data";
 
 export default function GameInit() {
     const rootRef = useRef<HTMLDivElement>(null);
     const gameRef = useRef<KAPLAYCtx>(null);
     const selectedChar = useGameStore((state) => state.selectedCharacter);
     const charSprite = selectedChar?.sprite || "boy";
+    const setCharacter = useGameStore((s) => s.setCharacter);
     
     useEffect(() => {
         const rootRefElement = rootRef.current;
@@ -41,6 +44,240 @@ export default function GameInit() {
         loadAssets(k);
 
         const progress = new GameManager(k);
+
+        k.scene("selection", () => {
+            let currentIndex = 0;
+
+            let currentCharacter = k.add([
+                k.sprite(characters[currentIndex].sprite),
+                k.pos(
+                    k.center().x, 
+                    0
+                ),
+                k.anchor("center"),
+                k.scale(3)
+            ]);
+        
+            const nameText = k.add([
+                k.text(characters[currentIndex].name, { font: "PressStart2P" }),
+                k.pos(
+                    k.center().x,
+                    
+                    k.center().y + 100
+                ),
+                k.anchor('center'),
+                k.color(20, 30, 21),
+                k.scale(.5),
+                "character-ui"
+            ]);
+        
+            const showCharacter = (index: number) => {
+                if (currentCharacter) {
+                    currentCharacter.destroy();
+                }
+        
+                const data = characters[index];
+        
+                currentCharacter = k.add([
+                    k.sprite(data.sprite),
+                    k.pos(
+                        k.center().x, 
+                        k.center().y
+                    ),
+                    k.anchor("center"),
+                    k.scale(.5)
+                ]);
+        
+                nameText.text = data.name;
+            };
+        
+            showCharacter(currentIndex);
+        
+            // left button
+            const arrowLeft = k.add([
+                k.sprite("arrowLeft"),
+                k.pos(k.center().x - 160, k.center().y),
+                k.anchor("center"),
+                k.scale(.2),
+                k.area()
+            ]);
+        
+            arrowLeft.onClick(() => {
+                currentIndex = (currentIndex - 1 + characters.length) % characters.length;
+                showCharacter(currentIndex);
+            });
+        
+            // right button
+            const arrowRight = k.add([
+                k.sprite("arrowRight"),
+                k.pos(k.center().x + 160, k.center().y),
+                k.anchor("center"),
+                k.scale(.2),
+                k.area()
+            ]);
+        
+            arrowRight.onClick(() => {
+                currentIndex = (currentIndex + 1) % characters.length;
+                showCharacter(currentIndex);
+            });
+        
+            // confirm button
+            const confirm = k.add([
+                k.rect(100, 40, { radius: 8 }),
+                k.pos(k.center().x, k.center().y + 160),
+                k.anchor("center"),
+                k.area(),
+                k.outline(3),
+                k.color(255, 250, 250),
+                "btn-ui"
+            ]);
+            
+            confirm.add([
+                k.text("CONFIRM", { size: 12, align: "center", font: "PressStart2P" }),
+                k.anchor("center"),
+                k.color(0, 0, 0),
+                "btn-ui"
+            ]);
+        
+            confirm.onClick(() => {
+                setCharacter(characters[currentIndex]);
+                k.go("loading");
+            });
+        });
+
+        k.scene("loading", () => {
+            let dots = 0;
+            let timer = 0;
+            const speed = 0.4;
+
+            const loadingText = k.add([
+                k.text("Loading...", { size: 24, font: "PressStart2P" }),
+                k.pos(k.center()),
+                k.anchor("center"),
+                k.color(158, 156, 43)
+            ]);
+
+            loadingText.onUpdate(() => {
+                timer += k.dt();
+
+                if (timer >= speed) {
+                    timer = 0;
+                    dots = (dots + 1) % 4;
+                    loadingText.text = "Loading" + ".".repeat(dots);
+                }
+            });
+
+            k.wait(3, () => {
+                k.go("instructions");
+            });
+        });
+
+        k.scene("instructions", () => {
+            const displayedMechanics = new Set<number>();
+            const pad = 128;
+        
+            let mechanic = 0;
+        
+            let currentMechanic = k.add([
+                k.text(mechanics[mechanic].text, {
+                    size: 16,
+                    width: k.width() - pad * 2,
+                    font: "PressStart2P",
+                    align: "center",
+                    letterSpacing: 2,
+                    lineSpacing: 8
+                }),
+                k.pos(k.center().x, 200),
+                k.color(158, 156, 43),
+                k.anchor("center"),
+                "instruction"
+            ]);
+        
+            const displayMechanic = (key: number) => {
+                if (currentMechanic) {
+                    currentMechanic.destroy();
+                }
+        
+                const textString = mechanics[key];
+        
+                k.wait(0.2, () => {
+                    currentMechanic = k.add([
+                        k.text(textString.text, {
+                            size: 16,
+                            width: k.width() - pad * 2,
+                            font: "PressStart2P",
+                            align: "center",
+                            letterSpacing: 2,
+                            lineSpacing: 10
+                        }),
+                        k.pos(k.center().x, 200),
+                        k.color(158, 156, 43),
+                        k.anchor("center"),
+                    ]);
+                });
+        
+                displayedMechanics.add(key);
+        
+                if (displayedMechanics.size === mechanics.length) {
+                    startButton.opacity = 1; // show start button when reached the end of mechanic
+                    startText.opacity = 1;
+                }
+            };
+        
+            displayMechanic(mechanic);
+        
+            // left button
+            const arrowLeft = k.add([
+                k.sprite("arrowLeftBold"),
+                k.pos(k.center().x - 550, k.center().y),
+                k.anchor("center"),
+                k.scale(0.3),
+                k.area(),
+            ]);
+        
+            arrowLeft.onClick(() => {
+                mechanic = (mechanic - 1 + mechanics.length) % mechanics.length;
+                displayMechanic(mechanic);
+            });
+        
+            // right button
+            const arrowRight = k.add([
+                k.sprite("arrowRightBold"),
+                k.pos(k.center().x + 550, k.center().y),
+                k.anchor("center"),
+                k.scale(0.3),
+                k.area(),
+            ]);
+        
+            arrowRight.onClick(() => {
+                mechanic = (mechanic + 1) % mechanics.length;
+                displayMechanic(mechanic);
+            });
+        
+            // start button (parent background object)
+            const startButton = k.add([
+                k.rect(140, 40, { radius: 8 }),
+                k.pos(k.center().x, k.center().y + 220),
+                k.anchor("center"),
+                k.scale(1),
+                k.outline(4),
+                k.color(184, 252, 168),
+                k.area(),
+                k.opacity(0), // hidden first
+            ]);
+        
+            // text for start button (child object)
+            const startText = startButton.add([
+                k.text("START", { size: 16, font: "PressStart2P" }),
+                k.anchor("center"),
+                k.color(0, 0, 0),
+                k.opacity(0) // hidden first
+            ]);
+        
+            startButton.onClick(() => {
+                k.go("main", 0);
+            });
+        });
 
         k.scene("main", (levelIndex: number) => {
     
@@ -473,7 +710,7 @@ export default function GameInit() {
         const unlocked = ProgressManager.getUnlockedLevels();
 
         if (unlocked === 0) {
-            k.go("main", 0);
+            k.go("selection");
         } else {
             k.go("freestyle", levels);
         }
@@ -487,7 +724,7 @@ export default function GameInit() {
 
             gameRef.current = null;
         };
-    }, [charSprite]);
+    }, []);
     
     return (
         <div ref={rootRef} id="canvas-container"></div>
