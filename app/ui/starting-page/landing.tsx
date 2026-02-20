@@ -7,7 +7,7 @@ export default function LandingPage() {
 
     return (
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-12 items-center justify-center mt-30">
-            <Link href="/rationale">
+            <Link href="/game/rationale">
                 <StartButton />
             </Link>
         </div>
